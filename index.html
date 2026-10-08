@@ -132,6 +132,15 @@
       min-height: 320px;
     }
 
+    .photo {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 4px solid #ffffff;
+    }
+
     .photo-shell {
       width: min(100%, 330px);
       display: flex;
@@ -276,6 +285,11 @@
         min-height: 220px;
       }
 
+      .photo {
+        width: 220px;
+        height: 220px;
+      }
+
       .photo-circle {
         width: 220px;
         height: 220px;
@@ -312,10 +326,7 @@
         </div>
 
         <div class="photo-wrapper">
-          <!-- To show your photo instead of initials, replace the line below with: <img src="photo.jpg" alt="Nabin Khadka" class="photo"> -->
-          <div class="photo-shell">
-            <div class="photo-circle">NK</div>
-          </div>
+          <img src="photo.jpg" alt="Nabin Khadka" class="photo">
         </div>
       </div>
     </section>
