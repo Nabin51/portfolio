@@ -54,6 +54,25 @@
       margin: 0 auto;
     }
 
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      box-shadow: 0 2px 8px rgba(18, 60, 105, 0.06);
+    }
+
+    nav .container {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
     section {
       padding: 72px 0;
     }
@@ -89,8 +108,14 @@
     h1 {
       font-size: clamp(2.6rem, 4vw, 4.2rem);
       line-height: 1.1;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       color: var(--navy);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
     .intro {
@@ -211,6 +236,16 @@
       font-weight: 700;
     }
 
+    .portfolio-card a {
+      color: var(--navy);
+      text-decoration: none;
+      display: block;
+    }
+
+    .portfolio-card a:hover {
+      text-decoration: underline;
+    }
+
     .contact-box {
       background: var(--card);
       border: 1px solid var(--line);
@@ -249,16 +284,30 @@
       section {
         padding: 56px 0;
       }
+
+      nav .container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="cross-sectional.html">What Cross-Sectional Data Can and Cannot Tell Us</a>
+    </div>
+  </nav>
+
   <main>
     <section class="hero">
       <div class="container hero-inner">
         <div>
           <div class="eyebrow">Public Health Student</div>
           <h1>Nabin Khadka</h1>
+          <p class="subtitle">PH 320: Why is frequent mental distress higher in Jamaica than in most of New York City - and how would we know that's really true?</p>
           <p class="intro">Public health student focused on equitable healthcare access and community well-being.</p>
         </div>
 
@@ -316,8 +365,7 @@
           </div>
 
           <div class="portfolio-card">
-            <!-- Add your Week 4 link here later -->
-            Coming soon.
+            <a href="cross-sectional.html">What Cross-Sectional Data Can and Cannot Tell Us</a>
           </div>
 
           <div class="portfolio-card">
