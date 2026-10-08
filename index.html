@@ -1,116 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nabin Khadka — Portfolio</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nabin Khadka | Public Health Portfolio</title>
+  <style>
+    :root {
+      --navy: #123c69;
+      --blue: #2b6cb0;
+      --blue-soft: #dfeefb;
+      --green: #2f8f73;
+      --green-soft: #e4f5ef;
+      --text: #1f2a37;
+      --muted: #5f6c7b;
+      --card: #ffffff;
+      --bg: #f4f8fb;
+      --line: #dfe7ee;
+      --shadow: 0 18px 42px rgba(18, 60, 105, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background: #f7f7f7;
-        color: #333;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #edf3f9 100%);
+      color: var(--text);
+      line-height: 1.6;
     }
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: #ffffff;
+
+    img {
+      max-width: 100%;
+      display: block;
     }
-    .photo {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-        margin: 20px auto;
+
+    a {
+      color: var(--navy);
+      text-decoration: none;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
     section {
-        max-width: 800px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
+      padding: 72px 0;
     }
-    h2 {
-        margin-top: 0;
+
+    h1, h2, h3, p {
+      margin-top: 0;
     }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 4vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--navy);
+    }
+
+    .intro {
+      font-size: 1.18rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 0;
+    }
+
+    .photo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 320px;
+    }
+
+    .photo-shell {
+      width: min(100%, 330px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-circle {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      color: #ffffff;
+      font-size: clamp(3.2rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--navy);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
+    }
+
+    .info-card h3 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .skills-wrap {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
     .skills-list li {
-        margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--blue-soft) 0%, var(--green-soft) 100%);
+      color: var(--navy);
+      border: 1px solid rgba(43, 108, 176, 0.12);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
     }
-    .cards {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
-    .card {
-        background: #fafafa;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        border: 1px solid #e0e0e0;
+
+    .portfolio-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 22px;
+      min-height: 180px;
+      box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 700;
     }
-    footer {
-        text-align: center;
-        padding: 30px;
-        font-size: 16px;
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
+      text-align: center;
     }
-</style>
+
+    .contact-box a {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    @media (max-width: 800px) {
+      .hero-inner,
+      .about-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+
+      .photo-wrapper {
+        min-height: 220px;
+      }
+
+      .photo-circle {
+        width: 220px;
+        height: 220px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <!-- To show your photo instead of initials, replace the circle background with: <img src="photo.jpg" alt="Profile photo" class="photo"> -->
-    <div class="photo">NK</div>
-    <h1>Nabin Khadka</h1>
-    <p>Public health student focused on community mental health.</p>
-</header>
-
-<section>
-    <h2>About Me</h2>
-    <p>I chose public health to help my community. The health issue I care most about is diabetes because it affects many people and families. I am working toward a career in public health policy to help improve health care and community health, and in the future I hope to use what I learn to help improve public health in Nepal.</p>
-</section>
-
-<section>
-    <h2>Skills</h2>
-    <ul class="skills-list">
-        <li>Communication</li>
-        <li>Teamwork</li>
-        <li>Problem-solving</li>
-    </ul>
-</section>
-
-<section>
-    <h2>PH 320 Portfolio — Applied Biostatistics in Public Health, York College CUNY</h2>
-    <div class="cards">
-
-        <!-- Add your Week 3 link here -->
-        <div class="card">
-            <h3>Week 3</h3>
-            <p>Coming soon.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Public Health Student</div>
+          <h1>Nabin Khadka</h1>
+          <p class="intro">Public health student focused on equitable healthcare access and community well-being.</p>
         </div>
 
-        <!-- Add your Week 4 link here -->
-        <div class="card">
-            <h3>Week 4</h3>
-            <p>Coming soon.</p>
+        <div class="photo-wrapper">
+          <!-- To show your photo instead of initials, replace the line below with: <img src="photo.jpg" alt="Nabin Khadka" class="photo"> -->
+          <div class="photo-shell">
+            <div class="photo-circle">NK</div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Add your Week 5 link here -->
-        <div class="card">
-            <h3>Week 5</h3>
-            <p>Coming soon.</p>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About me</h2>
+        <div class="about-grid">
+          <article class="info-card">
+            <h3>Why public health</h3>
+            <p>I chose public health because I want to help improve health outcomes for communities and address the systems that affect people’s well-being.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Health issue I care about</h3>
+            <p>I care most about mental health, because it deeply affects people’s daily lives, relationships, and ability to thrive, and it is often overlooked or stigmatized.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Career goal</h3>
+            <p>I am working toward a career in public health research or community health work focused on improving health outcomes and access for underserved communities.</p>
+          </article>
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-wrap">
+          <ul class="skills-list">
+            <li>Empathetic</li>
+            <li>Strong communicator</li>
+            <li>Organized</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<footer>
-    <p>Email: <a href="mailto:khadkanabin31@gmail.com">khadkanabin31@gmail.com</a></p>
-</footer>
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title">PH 320 Portfolio — Applied Biostatistics in Public Health, York College CUNY</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-card">
+            <!-- Add your Week 3 link here later -->
+            Coming soon.
+          </div>
 
+          <div class="portfolio-card">
+            <!-- Add your Week 4 link here later -->
+            Coming soon.
+          </div>
+
+          <div class="portfolio-card">
+            <!-- Add your Week 5 link here later -->
+            Coming soon.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-box">
+          <a href="mailto:nabin.khadka@york.cuny.edu">nabin.khadka@york.cuny.edu</a>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
