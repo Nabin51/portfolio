@@ -19,14 +19,8 @@
       --shadow: 0 18px 42px rgba(18, 60, 105, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -34,64 +28,27 @@
       color: var(--text);
       line-height: 1.6;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
+    img { max-width: 100%; display: block; }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
     nav {
       background: var(--card);
       border-bottom: 1px solid var(--line);
       padding: 16px 0;
       box-shadow: 0 2px 8px rgba(18, 60, 105, 0.06);
     }
-
-    nav .container {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    nav a {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
-
-    section {
-      padding: 72px 0;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    .hero {
-      padding: 72px 0 40px;
-    }
-
+    nav .container { display: flex; gap: 32px; align-items: center; }
+    nav a { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    section { padding: 72px 0; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero { padding: 72px 0 40px; }
     .hero-inner {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
       align-items: center;
       gap: 42px;
     }
-
     .eyebrow {
       display: inline-block;
       background: var(--green-soft);
@@ -104,34 +61,20 @@
       border-radius: 999px;
       margin-bottom: 18px;
     }
-
     h1 {
       font-size: clamp(2.6rem, 4vw, 4.2rem);
       line-height: 1.1;
       margin-bottom: 12px;
       color: var(--navy);
     }
-
-    .subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .intro {
-      font-size: 1.18rem;
-      color: var(--muted);
-      max-width: 620px;
-      margin-bottom: 0;
-    }
-
+    .subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+    .intro { font-size: 1.18rem; color: var(--muted); max-width: 620px; margin-bottom: 0; }
     .photo-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 320px;
     }
-
     .photo {
       width: 260px;
       height: 260px;
@@ -140,42 +83,13 @@
       box-shadow: var(--shadow);
       border: 4px solid #ffffff;
     }
-
-    .photo-shell {
-      width: min(100%, 330px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .photo-circle {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow);
-      color: #ffffff;
-      font-size: clamp(3.2rem, 6vw, 5rem);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
     .section-title {
       font-size: clamp(2rem, 3vw, 2.8rem);
       color: var(--navy);
       margin-bottom: 24px;
       text-align: center;
     }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
+    .about-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
     .info-card {
       background: var(--card);
       border: 1px solid var(--line);
@@ -183,19 +97,8 @@
       padding: 24px;
       box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
     }
-
-    .info-card h3 {
-      font-size: 1.05rem;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
+    .info-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 12px; }
+    .info-card p { margin: 0; color: var(--muted); font-size: 1rem; }
     .skills-wrap {
       background: var(--card);
       border: 1px solid var(--line);
@@ -203,7 +106,6 @@
       padding: 26px;
       box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
     }
-
     .skills-list {
       display: flex;
       flex-wrap: wrap;
@@ -212,7 +114,6 @@
       padding: 0;
       list-style: none;
     }
-
     .skills-list li {
       background: linear-gradient(135deg, var(--blue-soft) 0%, var(--green-soft) 100%);
       color: var(--navy);
@@ -222,13 +123,7 @@
       font-weight: 700;
       letter-spacing: 0.01em;
     }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
     .portfolio-card {
       background: var(--card);
       border: 1px solid var(--line);
@@ -244,17 +139,8 @@
       font-size: 1.05rem;
       font-weight: 700;
     }
-
-    .portfolio-card a {
-      color: var(--navy);
-      text-decoration: none;
-      display: block;
-    }
-
-    .portfolio-card a:hover {
-      text-decoration: underline;
-    }
-
+    .portfolio-card a { color: var(--navy); text-decoration: none; display: block; }
+    .portfolio-card a:hover { text-decoration: underline; }
     .contact-box {
       background: var(--card);
       border: 1px solid var(--line);
@@ -263,47 +149,14 @@
       box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
       text-align: center;
     }
-
-    .contact-box a {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
-
+    .contact-box a { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
     @media (max-width: 800px) {
-      .hero-inner,
-      .about-grid,
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 52px;
-      }
-
-      .photo-wrapper {
-        min-height: 220px;
-      }
-
-      .photo {
-        width: 220px;
-        height: 220px;
-      }
-
-      .photo-circle {
-        width: 220px;
-        height: 220px;
-      }
-
-      section {
-        padding: 56px 0;
-      }
-
-      nav .container {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-      }
+      .hero-inner, .about-grid, .portfolio-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 52px; }
+      .photo-wrapper { min-height: 220px; }
+      .photo { width: 220px; height: 220px; }
+      section { padding: 56px 0; }
+      nav .container { flex-direction: column; gap: 12px; align-items: flex-start; }
     }
   </style>
 </head>
@@ -312,6 +165,7 @@
     <div class="container">
       <a href="index.html">Home</a>
       <a href="cross-sectional.html">What Cross-Sectional Data Can and Cannot Tell Us</a>
+      <a href="regression.html">Smoking is injurious to health</a>
     </div>
   </nav>
 
@@ -324,7 +178,6 @@
           <p class="subtitle">PH 320: Why is frequent mental distress higher in Jamaica than in most of New York City - and how would we know that's really true?</p>
           <p class="intro">Public health student focused on equitable healthcare access and community well-being.</p>
         </div>
-
         <div class="photo-wrapper">
           <img src="photo.jpg" alt="Nabin Khadka" class="photo">
         </div>
@@ -339,12 +192,10 @@
             <h3>Why public health</h3>
             <p>I chose public health because I want to help improve health outcomes for communities and address the systems that affect people’s well-being.</p>
           </article>
-
           <article class="info-card">
             <h3>Health issue I care about</h3>
             <p>I care most about mental health, because it deeply affects people’s daily lives, relationships, and ability to thrive, and it is often overlooked or stigmatized.</p>
           </article>
-
           <article class="info-card">
             <h3>Career goal</h3>
             <p>I am working toward a career in public health research or community health work focused on improving health outcomes and access for underserved communities.</p>
@@ -371,16 +222,12 @@
         <h2 class="section-title">PH 320 Portfolio — Applied Biostatistics in Public Health, York College CUNY</h2>
         <div class="portfolio-grid">
           <div class="portfolio-card">
-            <!-- Add your Week 3 link here later -->
-            Coming soon.
+            <a href="regression.html">Smoking is injurious to health</a>
           </div>
-
           <div class="portfolio-card">
             <a href="cross-sectional.html">What Cross-Sectional Data Can and Cannot Tell Us</a>
           </div>
-
           <div class="portfolio-card">
-            <!-- Add your Week 5 link here later -->
             Coming soon.
           </div>
         </div>
