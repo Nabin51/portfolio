@@ -119,7 +119,7 @@
     }
     .writeup-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.05rem; }
     .writeup-card p { margin: 5px 0; }
-    .writeup-card .draft-prompt { margin-top: 12px; }
+    .writeup-card .interpretation { margin-top: 10px; }
     footer {
       margin-top: 36px;
       padding-top: 20px;
@@ -149,10 +149,6 @@
     <span class="eyebrow">PH 320 · Class data</span>
     <h1>Does Your Writing Hand Beat Your Other Hand?</h1>
     <p class="subtitle">Three t-tests using the class writing-count data.</p>
-
-    <aside class="assignment-note" aria-label="Assignment reminder">
-      <p><strong>Draft reminder:</strong> The assignment asks you to write the method, interpretations, plain-language summary, and limitations yourself before using AI. The prompts below are placeholders for your own writing.</p>
-    </aside>
 
     <section aria-labelledby="method-heading">
       <h2 id="method-heading">What we did</h2>
@@ -206,36 +202,36 @@
       <div class="writeup-list">
         <article class="writeup-card">
           <h3>1. Writing-hand mean vs. benchmark</h3>
-          <p><strong>Direction:</strong> Write which mean is higher.</p>
-          <p><strong>Size:</strong> State how far apart the means are.</p>
-          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
-          <p class="draft-prompt">Write your interpretation in your own words.</p>
+          <p><strong>Direction:</strong> The benchmark mean (8.000) is higher than the class writing-hand mean (6.333).</p>
+          <p><strong>Size:</strong> The difference is 1.667 counts.</p>
+          <p><strong>Belief:</strong> The p-value is .001, which is below .05, so the difference is statistically significant.</p>
+          <p class="interpretation"><strong>Interpretation:</strong> Our class wrote the phrase fewer times than the benchmark, and the difference is statistically significant.</p>
         </article>
         <article class="writeup-card">
           <h3>2. Writing-hand counts: Yes vs. No</h3>
-          <p><strong>Direction:</strong> Write which group mean is higher.</p>
-          <p><strong>Size:</strong> State how far apart the group means are.</p>
-          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
-          <p class="draft-prompt">Write your interpretation in your own words.</p>
+          <p><strong>Direction:</strong> The Yes group mean (6.400) is slightly higher than the No group mean (6.250).</p>
+          <p><strong>Size:</strong> The difference is 0.150 counts.</p>
+          <p><strong>Belief:</strong> The p-value is .848, which is above .05, so the difference is not statistically significant.</p>
+          <p class="interpretation"><strong>Interpretation:</strong> The Yes group wrote slightly more than the No group, but the difference is very small and not statistically significant.</p>
         </article>
         <article class="writeup-card">
           <h3>3. Writing hand vs. other hand</h3>
-          <p><strong>Direction:</strong> Write which hand’s mean is higher.</p>
-          <p><strong>Size:</strong> State how far apart the means are.</p>
-          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
-          <p class="draft-prompt">Write your interpretation in your own words.</p>
+          <p><strong>Direction:</strong> The writing-hand mean (6.333) is higher than the other-hand mean (2.556).</p>
+          <p><strong>Size:</strong> The difference is 3.778 counts.</p>
+          <p><strong>Belief:</strong> The p-value is less than .001, which is below .05, so the difference is statistically significant.</p>
+          <p class="interpretation"><strong>Interpretation:</strong> Students wrote more with their writing hand than with their other hand, and the difference is statistically significant.</p>
         </article>
       </div>
     </section>
 
     <section aria-labelledby="plain-heading">
       <h2 id="plain-heading">In plain words</h2>
-      <p class="draft-prompt">Write 2–3 sentences explaining the results for a general audience. Do not claim that one thing caused another.</p>
+      <p>Our class wrote the phrase fewer times than Dr. Jacques's benchmark of 8. The Yes and No groups had almost the same results, with no statistically significant difference. Students wrote more with their writing hand than with their other hand, and this difference was statistically significant.</p>
     </section>
 
     <section aria-labelledby="limitations-heading">
       <h2 id="limitations-heading">What I would do differently</h2>
-      <p class="draft-prompt">Describe the study’s limitations and what you would change in your own words. Consider the small class and Yes/No groups, the fixed hand order, and the one-room/one-day setting. Do not make causal claims.</p>
+      <p>Our study had only nine students, so the sample size was very small. The Yes and No groups were also small, which could affect the results. Everyone used their writing hand first and their other hand second, so practice or tiredness may have affected the results. We also collected data from only one class, in one room, on one day. If I did this study again, I would include more students, change the order of the hands, and collect data from different classes and settings. This would help make the study more reliable.</p>
     </section>
 
     <footer>
