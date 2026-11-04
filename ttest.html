@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A class exercise comparing writing-hand and other-hand writing counts with three t-tests.">
+  <title>Does Your Writing Hand Beat Your Other Hand? | Nabin Khadka</title>
+  <style>
+    :root {
+      --navy: #123c69;
+      --blue: #2b6cb0;
+      --blue-soft: #dfeefb;
+      --green: #2f8f73;
+      --green-soft: #e4f5ef;
+      --text: #1f2a37;
+      --muted: #5f6c7b;
+      --card: #ffffff;
+      --bg: #f4f8fb;
+      --line: #dfe7ee;
+      --warning: #fff7e6;
+      --warning-line: #f0d99b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      box-shadow: 0 2px 8px rgba(18, 60, 105, 0.06);
+    }
+    nav .container, main {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    nav .container { display: flex; gap: 24px; flex-wrap: wrap; }
+    nav a { font-size: 0.95rem; font-weight: 700; }
+    main {
+      margin-top: 40px;
+      margin-bottom: 48px;
+      padding: 36px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 12px;
+      color: var(--navy);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+    }
+    .subtitle { color: var(--muted); font-size: 1.1rem; }
+    h2 {
+      margin: 34px 0 12px;
+      color: var(--blue);
+      font-size: 1.35rem;
+    }
+    .assignment-note {
+      padding: 16px 18px;
+      border: 1px solid var(--warning-line);
+      border-radius: 10px;
+      background: var(--warning);
+    }
+    .assignment-note p { margin: 0; }
+    .draft-prompt {
+      margin: 0;
+      padding: 16px 18px;
+      border: 1px dashed #9bb6d1;
+      border-radius: 10px;
+      background: #f8fbfe;
+      color: var(--muted);
+    }
+    .results-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    th, td {
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef4fa; color: var(--navy); }
+    tbody tr:last-child td { border-bottom: 0; }
+    td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
+    caption { padding: 0 0 10px; text-align: left; color: var(--muted); font-size: 0.92rem; }
+    .table-note { color: var(--muted); font-size: 0.9rem; }
+    .writeup-list { display: grid; gap: 14px; }
+    .writeup-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .writeup-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.05rem; }
+    .writeup-card p { margin: 5px 0; }
+    .writeup-card .draft-prompt { margin-top: 12px; }
+    footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 650px) {
+      main { margin-top: 20px; padding: 24px 18px; }
+      nav .container { gap: 14px; }
+      th, td { padding: 10px 8px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="cross-sectional.html">Cross-sectional data</a>
+      <a href="regression.html">Regression</a>
+      <a href="ttest.html" aria-current="page">Class t-tests</a>
+    </div>
+  </nav>
+
+  <main>
+    <span class="eyebrow">PH 320 · Class data</span>
+    <h1>Does Your Writing Hand Beat Your Other Hand?</h1>
+    <p class="subtitle">Three t-tests using the class writing-count data.</p>
+
+    <aside class="assignment-note" aria-label="Assignment reminder">
+      <p><strong>Draft reminder:</strong> The assignment asks you to write the method, interpretations, plain-language summary, and limitations yourself before using AI. The prompts below are placeholders for your own writing.</p>
+    </aside>
+
+    <section aria-labelledby="method-heading">
+      <h2 id="method-heading">What we did</h2>
+      <p class="draft-prompt">Write your 3–4 sentence method description here. Include the timing, sentence, yes/no question, and who took part.</p>
+    </section>
+
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading">Results</h2>
+      <div class="results-wrap">
+        <table>
+          <caption>Counts of “I am amazing” written in one minute.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Test</th>
+              <th scope="col">Mean 1</th>
+              <th scope="col">Mean 2</th>
+              <th scope="col">Difference</th>
+              <th scope="col">p-value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One-sample: writing hand vs. benchmark</td>
+              <td><strong>6.333</strong></td>
+              <td><strong>8.000</strong></td>
+              <td><strong>−1.667</strong></td>
+              <td><strong>.001</strong></td>
+            </tr>
+            <tr>
+              <td>Independent samples: Yes vs. No</td>
+              <td><strong>6.400</strong></td>
+              <td><strong>6.250</strong></td>
+              <td><strong>0.150</strong></td>
+              <td><strong>.848</strong></td>
+            </tr>
+            <tr>
+              <td>Paired samples: writing hand vs. other hand</td>
+              <td><strong>6.333</strong></td>
+              <td><strong>2.556</strong></td>
+              <td><strong>3.778</strong></td>
+              <td><strong>&lt; .001</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Mean 1 is the class writing-hand mean, Yes-group mean, and writing-hand mean, respectively. Mean 2 is the professor’s benchmark, No-group mean, and other-hand mean, respectively. The Yes/No comparison uses Welch’s independent-samples t-test; p-values are two-sided.</p>
+    </section>
+
+    <section aria-labelledby="writeups-heading">
+      <h2 id="writeups-heading">Three test write-ups</h2>
+      <div class="writeup-list">
+        <article class="writeup-card">
+          <h3>1. Writing-hand mean vs. benchmark</h3>
+          <p><strong>Direction:</strong> Write which mean is higher.</p>
+          <p><strong>Size:</strong> State how far apart the means are.</p>
+          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
+          <p class="draft-prompt">Write your interpretation in your own words.</p>
+        </article>
+        <article class="writeup-card">
+          <h3>2. Writing-hand counts: Yes vs. No</h3>
+          <p><strong>Direction:</strong> Write which group mean is higher.</p>
+          <p><strong>Size:</strong> State how far apart the group means are.</p>
+          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
+          <p class="draft-prompt">Write your interpretation in your own words.</p>
+        </article>
+        <article class="writeup-card">
+          <h3>3. Writing hand vs. other hand</h3>
+          <p><strong>Direction:</strong> Write which hand’s mean is higher.</p>
+          <p><strong>Size:</strong> State how far apart the means are.</p>
+          <p><strong>Belief:</strong> Compare the p-value with .05.</p>
+          <p class="draft-prompt">Write your interpretation in your own words.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="plain-heading">
+      <h2 id="plain-heading">In plain words</h2>
+      <p class="draft-prompt">Write 2–3 sentences explaining the results for a general audience. Do not claim that one thing caused another.</p>
+    </section>
+
+    <section aria-labelledby="limitations-heading">
+      <h2 id="limitations-heading">What I would do differently</h2>
+      <p class="draft-prompt">Describe the study’s limitations and what you would change in your own words. Consider the small class and Yes/No groups, the fixed hand order, and the one-room/one-day setting. Do not make causal claims.</p>
+    </section>
+
+    <footer>
+      <p>Nabin Khadka<br>PH 320 · Applied Biostatistics in Public Health</p>
+      <p><a href="index.html">Back to portfolio home</a></p>
+    </footer>
+  </main>
+</body>
+</html>
