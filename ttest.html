@@ -2,164 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A class exercise comparing writing-hand and other-hand writing counts with three t-tests.">
-  <title>Does Your Writing Hand Beat Your Other Hand? | Nabin Khadka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does Your Writing Hand Beat Your Other Hand?</title>
   <style>
     :root {
-      --navy: #123c69;
-      --blue: #2b6cb0;
-      --blue-soft: #dfeefb;
-      --green: #2f8f73;
-      --green-soft: #e4f5ef;
-      --text: #1f2a37;
-      --muted: #5f6c7b;
-      --card: #ffffff;
-      --bg: #f4f8fb;
-      --line: #dfe7ee;
-      --warning: #fff7e6;
-      --warning-line: #f0d99b;
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: #202a35;
+      background: #f5f7fa;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      background: #f5f7fa;
+      color: #202a35;
     }
-    a { color: var(--navy); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
     nav {
-      background: var(--card);
-      border-bottom: 1px solid var(--line);
-      padding: 16px 0;
+      background: #ffffff;
+      border-bottom: 1px solid #dfe7ee;
       box-shadow: 0 2px 8px rgba(18, 60, 105, 0.06);
     }
-    nav .container, main {
-      width: min(900px, calc(100% - 32px));
+
+    nav .container {
+      max-width: 700px;
       margin: 0 auto;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
     }
-    nav .container { display: flex; gap: 24px; flex-wrap: wrap; }
-    nav a { font-size: 0.95rem; font-weight: 700; }
+
+    nav a {
+      color: #123c69;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
-      margin-top: 40px;
-      margin-bottom: 48px;
-      padding: 36px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
+      width: min(100% - 2rem, 700px);
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border: 1px solid #e1e6eb;
+      border-radius: 8px;
       box-shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
     }
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      background: var(--green-soft);
-      color: var(--green);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
+
+    h1, h2, h3 {
+      line-height: 1.3;
+      color: #123c69;
     }
-    h1, h2, p { margin-top: 0; }
+
     h1 {
-      margin-bottom: 12px;
-      color: var(--navy);
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
     }
-    .subtitle { color: var(--muted); font-size: 1.1rem; }
+
     h2 {
-      margin: 34px 0 12px;
-      color: var(--blue);
+      margin-top: 2rem;
       font-size: 1.35rem;
     }
-    .assignment-note {
-      padding: 16px 18px;
-      border: 1px solid var(--warning-line);
-      border-radius: 10px;
-      background: var(--warning);
+
+    p {
+      margin: 0 0 1rem;
+      color: #202a35;
     }
-    .assignment-note p { margin: 0; }
-    .draft-prompt {
-      margin: 0;
-      padding: 16px 18px;
-      border: 1px dashed #9bb6d1;
-      border-radius: 10px;
-      background: #f8fbfe;
-      color: var(--muted);
+
+    .table-wrap {
+      overflow-x: auto;
     }
-    .results-wrap { overflow-x: auto; }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 16px 0 8px;
+      margin-top: 0.75rem;
       font-variant-numeric: tabular-nums;
     }
+
     th, td {
-      padding: 13px 12px;
-      border-bottom: 1px solid var(--line);
+      padding: 0.7rem 0.55rem;
+      border-bottom: 1px solid #dfe7ee;
       text-align: left;
       vertical-align: top;
     }
-    th { background: #eef4fa; color: var(--navy); }
-    tbody tr:last-child td { border-bottom: 0; }
-    td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
-    caption { padding: 0 0 10px; text-align: left; color: var(--muted); font-size: 0.92rem; }
-    .table-note { color: var(--muted); font-size: 0.9rem; }
-    .writeup-list { display: grid; gap: 14px; }
-    .writeup-card {
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fff;
+
+    th {
+      background: #f1f4f7;
+      color: #123c69;
     }
-    .writeup-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.05rem; }
-    .writeup-card p { margin: 5px 0; }
-    .writeup-card .interpretation { margin-top: 10px; }
+
+    td:not(:first-child),
+    th:not(:first-child) {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .writeup p {
+      margin: 0.35rem 0;
+    }
+
+    .home-link {
+      margin-top: 2rem;
+    }
+
     footer {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+      width: min(100% - 2rem, 700px);
+      margin: 0 auto 2rem;
+      color: #586574;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
     }
-    @media (max-width: 650px) {
-      main { margin-top: 20px; padding: 24px 18px; }
-      nav .container { gap: 14px; }
-      th, td { padding: 10px 8px; font-size: 0.9rem; }
+
+    @media (max-width: 520px) {
+      main {
+        margin: 1rem auto;
+        padding: 1.25rem;
+      }
+
+      th, td {
+        padding: 0.55rem 0.4rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <nav aria-label="Main navigation">
+  <nav>
     <div class="container">
       <a href="index.html">Home</a>
       <a href="cross-sectional.html">Cross-sectional data</a>
       <a href="regression.html">Regression</a>
-      <a href="ttest.html" aria-current="page">Class t-tests</a>
+      <a href="ttest.html">Class t-tests</a>
     </div>
   </nav>
 
   <main>
-    <span class="eyebrow">PH 320 · Class data</span>
     <h1>Does Your Writing Hand Beat Your Other Hand?</h1>
-    <p class="subtitle">Three t-tests using the class writing-count data.</p>
 
-    <section aria-labelledby="method-heading">
-      <h2 id="method-heading">What we did</h2>
-      <p class="draft-prompt">Write your 3–4 sentence method description here. Include the timing, sentence, yes/no question, and who took part.</p>
+    <section>
+      <h2>What we did</h2>
+      <p>For this study, each student wrote the sentence “I am amazing” for one minute with their writing hand and then for one minute with their other hand. Everyone also answered the same yes/no question about whether they write in script. I compared the class writing-hand average to Dr. Jacques’s benchmark, compared the yes and no groups on writing-hand counts, and compared each student’s writing-hand count to their other-hand count. The whole class did this in the same room on the same day.</p>
     </section>
 
-    <section aria-labelledby="results-heading">
-      <h2 id="results-heading">Results</h2>
-      <div class="results-wrap">
+    <section>
+      <h2>Results</h2>
+      <div class="table-wrap">
         <table>
-          <caption>Counts of “I am amazing” written in one minute.</caption>
           <thead>
             <tr>
               <th scope="col">Test</th>
@@ -171,73 +170,71 @@
           </thead>
           <tbody>
             <tr>
-              <td>One-sample: writing hand vs. benchmark</td>
-              <td><strong>6.333</strong></td>
-              <td><strong>8.000</strong></td>
-              <td><strong>−1.667</strong></td>
-              <td><strong>.001</strong></td>
+              <td>One-sample (class writing hand vs. benchmark)</td>
+              <td>6.33</td>
+              <td>8.00</td>
+              <td>−1.67</td>
+              <td>0.0011</td>
             </tr>
             <tr>
-              <td>Independent samples: Yes vs. No</td>
-              <td><strong>6.400</strong></td>
-              <td><strong>6.250</strong></td>
-              <td><strong>0.150</strong></td>
-              <td><strong>.848</strong></td>
+              <td>Independent-samples (Yes vs. No)</td>
+              <td>6.40</td>
+              <td>6.25</td>
+              <td>0.15</td>
+              <td>0.85</td>
             </tr>
             <tr>
-              <td>Paired samples: writing hand vs. other hand</td>
-              <td><strong>6.333</strong></td>
-              <td><strong>2.556</strong></td>
-              <td><strong>3.778</strong></td>
-              <td><strong>&lt; .001</strong></td>
+              <td>Paired-samples (writing hand vs. other hand)</td>
+              <td>6.33</td>
+              <td>2.56</td>
+              <td>3.78</td>
+              <td>0.000006</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note">Mean 1 is the class writing-hand mean, Yes-group mean, and writing-hand mean, respectively. Mean 2 is the professor’s benchmark, No-group mean, and other-hand mean, respectively. The Yes/No comparison uses Welch’s independent-samples t-test; p-values are two-sided.</p>
     </section>
 
-    <section aria-labelledby="writeups-heading">
-      <h2 id="writeups-heading">Three test write-ups</h2>
-      <div class="writeup-list">
-        <article class="writeup-card">
-          <h3>1. Writing-hand mean vs. benchmark</h3>
-          <p><strong>Direction:</strong> The benchmark mean (8.000) is higher than the class writing-hand mean (6.333).</p>
-          <p><strong>Size:</strong> The difference is 1.667 counts.</p>
-          <p><strong>Belief:</strong> The p-value is .001, which is below .05, so the difference is statistically significant.</p>
-          <p class="interpretation"><strong>Interpretation:</strong> Our class wrote the phrase fewer times than the benchmark, and the difference is statistically significant.</p>
-        </article>
-        <article class="writeup-card">
-          <h3>2. Writing-hand counts: Yes vs. No</h3>
-          <p><strong>Direction:</strong> The Yes group mean (6.400) is slightly higher than the No group mean (6.250).</p>
-          <p><strong>Size:</strong> The difference is 0.150 counts.</p>
-          <p><strong>Belief:</strong> The p-value is .848, which is above .05, so the difference is not statistically significant.</p>
-          <p class="interpretation"><strong>Interpretation:</strong> The Yes group wrote slightly more than the No group, but the difference is very small and not statistically significant.</p>
-        </article>
-        <article class="writeup-card">
-          <h3>3. Writing hand vs. other hand</h3>
-          <p><strong>Direction:</strong> The writing-hand mean (6.333) is higher than the other-hand mean (2.556).</p>
-          <p><strong>Size:</strong> The difference is 3.778 counts.</p>
-          <p><strong>Belief:</strong> The p-value is less than .001, which is below .05, so the difference is statistically significant.</p>
-          <p class="interpretation"><strong>Interpretation:</strong> Students wrote more with their writing hand than with their other hand, and the difference is statistically significant.</p>
-        </article>
-      </div>
+    <section class="writeup">
+      <h2>The class writing hand compared with the benchmark</h2>
+      <p><strong>Direction:</strong> The benchmark was higher.</p>
+      <p><strong>Size:</strong> The class mean was 1.67 lower than Dr. Jacques’s benchmark.</p>
+      <p><strong>Belief:</strong> The p-value was 0.0011, which is below .05.</p>
+      <p>The class wrote fewer times with their writing hand than the benchmark, and that difference was unlikely to be due to chance.</p>
     </section>
 
-    <section aria-labelledby="plain-heading">
-      <h2 id="plain-heading">In plain words</h2>
-      <p>Our class wrote the phrase fewer times than Dr. Jacques's benchmark of 8. The Yes and No groups had almost the same results, with no statistically significant difference. Students wrote more with their writing hand than with their other hand, and this difference was statistically significant.</p>
+    <section class="writeup">
+      <h2>The yes group compared with the no group</h2>
+      <p><strong>Direction:</strong> The yes group was slightly higher.</p>
+      <p><strong>Size:</strong> The yes group mean was 0.15 higher than the no group mean.</p>
+      <p><strong>Belief:</strong> The p-value was 0.85, which is above .05.</p>
+      <p>The yes and no groups were very similar, and the difference was not strong enough to say it was unlikely to be due to chance.</p>
     </section>
 
-    <section aria-labelledby="limitations-heading">
-      <h2 id="limitations-heading">What I would do differently</h2>
-      <p>Our study had only nine students, so the sample size was very small. The Yes and No groups were also small, which could affect the results. Everyone used their writing hand first and their other hand second, so practice or tiredness may have affected the results. We also collected data from only one class, in one room, on one day. If I did this study again, I would include more students, change the order of the hands, and collect data from different classes and settings. This would help make the study more reliable.</p>
+    <section class="writeup">
+      <h2>Writing hand compared with other hand</h2>
+      <p><strong>Direction:</strong> The writing hand was higher.</p>
+      <p><strong>Size:</strong> The writing-hand mean was 3.78 higher than the other-hand mean.</p>
+      <p><strong>Belief:</strong> The p-value was 0.000006, which is below .05.</p>
+      <p>Within the same students, the writing hand produced more counts than the other hand, and the difference was unlikely to be due to chance.</p>
     </section>
 
-    <footer>
-      <p>Nabin Khadka<br>PH 320 · Applied Biostatistics in Public Health</p>
-      <p><a href="index.html">Back to portfolio home</a></p>
-    </footer>
+    <section>
+      <h2>In plain words</h2>
+      <p>The class was below the benchmark, but students wrote more with their writing hand than with their other hand. The yes and no groups had very similar writing-hand counts, and the results do not show that the yes/no answer caused any difference.</p>
+    </section>
+
+    <section>
+      <h2>What I would do differently</h2>
+      <p>This study was useful, but it had some real limits. The class was small, so splitting it into yes and no groups left very few students in each group, which made it harder to detect a meaningful difference. Everyone wrote with their writing hand first, so practice and tiredness likely affected the second round and got mixed into the results. The data came from one room on one day, so it does not tell us much about people outside this class. Also, even when a difference appears, it does not prove that the yes/no answer caused it.</p>
+    </section>
+
+    <p class="home-link"><a href="index.html">Home</a></p>
   </main>
+
+  <footer>
+    Nabin Khadka<br>
+    PH 320 · Applied Biostatistics in Public Health
+  </footer>
 </body>
 </html>
