@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Does Your Writing Hand Beat Your Other Hand?-Nabin</title>
+  <title>Does Your Writing Hand Beat Your Other Hand?</title>
   <style>
     :root {
       --navy: #123c69;
       --blue: #2b6cb0;
-      --blue-soft: #dfeefb;
-      --green: #2f8f73;
-      --green-soft: #e4f5ef;
       --text: #1f2a37;
       --muted: #5f6c7b;
       --card: #ffffff;
@@ -19,7 +16,9 @@
       --shadow: 0 10px 24px rgba(18, 60, 105, 0.06);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -52,7 +51,9 @@
       font-size: 0.95rem;
     }
 
-    nav a:hover { text-decoration: underline; }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
     main {
       width: min(100% - 2rem, 700px);
@@ -65,8 +66,7 @@
     }
 
     h1,
-    h2,
-    h3 {
+    h2 {
       margin-top: 0;
       color: var(--navy);
       line-height: 1.2;
@@ -86,7 +86,6 @@
     p {
       margin: 0 0 18px;
       font-size: 1.03rem;
-      color: var(--text);
     }
 
     .results-wrap {
@@ -118,9 +117,21 @@
       white-space: nowrap;
     }
 
+    .question-list {
+      padding-left: 1.4rem;
+    }
+
+    .question-list li {
+      margin-bottom: 1rem;
+    }
+
     .home-link,
     footer {
       text-align: center;
+    }
+
+    .home-link {
+      margin-top: 24px;
     }
 
     footer {
@@ -140,16 +151,21 @@
       nav .container {
         gap: 12px;
       }
+
+      th, td {
+        padding: 8px 6px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
+  <nav aria-label="Main navigation">
     <div class="container">
       <a href="index.html">Home</a>
       <a href="cross-sectional.html">What Cross-Sectional Data Can and Cannot Tell Us</a>
       <a href="regression.html">Smoking is injurious to health</a>
-      <a href="ttest.html">Does Your Writing Hand Beat Your Other Hand?</a>
+      <a href="ttest.html" aria-current="page">Does Your Writing Hand Beat Your Other Hand?</a>
     </div>
   </nav>
 
@@ -220,6 +236,38 @@
 
     <h2>What I would do differently</h2>
     <p>This study was useful, but it had some real limits. The class was small, so splitting it into yes and no groups left very few students in each group, which made it harder to detect a meaningful difference. Everyone wrote with their writing hand first, so practice and tiredness likely affected the second round and got mixed into the results. The data came from one room on one day, so it does not tell us much about people outside this class. Also, even when a difference appears, it does not prove that the yes/no answer caused it.</p>
+
+    <h2>Which test would you use?</h2>
+    <ol class="question-list">
+      <li>
+        <strong>Blood pressure before and after a program:</strong>
+        Paired-samples t-test. The same patients are measured twice, before and after the program.
+      </li>
+      <li>
+        <strong>Sleep for commuters and on-campus students:</strong>
+        Independent-samples t-test. The question compares average sleep for two separate groups of students.
+      </li>
+      <li>
+        <strong>County average birth weight compared with 7.5 pounds:</strong>
+        One-sample t-test. One county average is being compared with a single benchmark value.
+      </li>
+      <li>
+        <strong>Smoking and mental distress across 168 ZIP codes:</strong>
+        Regression. The question looks at the relationship between two numeric measures across ZIP codes.
+      </li>
+      <li>
+        <strong>Heart rate in January and June:</strong>
+        Paired-samples t-test. The same gym members are measured at both times.
+      </li>
+      <li>
+        <strong>Wait times at two hospitals:</strong>
+        Independent-samples t-test. The average wait times are compared between two separate hospitals.
+      </li>
+      <li>
+        <strong>Health insurance and smoking, both yes/no:</strong>
+        This is the one that is different: it is not a comparison of means. Both variables are categorical, and the question asks whether they are related; that calls for a categorical association test, which we have not covered yet.
+      </li>
+    </ol>
 
     <p class="home-link"><a href="index.html">Home</a></p>
   </main>
